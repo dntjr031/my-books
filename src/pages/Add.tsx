@@ -1,7 +1,11 @@
+import AddContainer from '../containers/AddContainer';
+import useToken from '../hooks/useToken';
+import { Redirect } from 'react-router-dom';
+
 export default function Add() {
-  return (
-    <div>
-      <h1>Add</h1>
-    </div>
-  );
+  const token = useToken();
+  if (token === null) {
+    return <Redirect to="/signin" />;
+  }
+  return <AddContainer />;
 }
